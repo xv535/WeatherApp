@@ -1,2 +1,4 @@
 [build-dependencies]
     publish = "dist/"
+
+    functions = "serverless/"
