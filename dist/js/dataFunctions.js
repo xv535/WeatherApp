@@ -1,6 +1,4 @@
 "use strict";
-
-
 export const setLocationObject = (locationObj, coordsObj) => {
   const { lat, lon, name, unit } = coordsObj;
   locationObj.setLat(lat);
@@ -11,24 +9,22 @@ export const setLocationObject = (locationObj, coordsObj) => {
   }
 };
 
-
 export const getHomeLocation = () => {
   return localStorage.getItem("defaultWeatherLocation");
 };
 
 export const getWeatherFromCoords = async (locationObj) => {
-  // const lat = locationObj.getLat();
-  // const lon = locationObj.getLon();
-  // const units = locationObj.getUnit();
-  // const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly,alerts&units=${units}&appid=${WEATHER_API_KEY}`;
-  // try {
-  //   const weatherStream = await fetch(url);
-  //   const weatherJson = await weatherStream.json();
-  //   return weatherJson;
-  // }
-  // catch (err) {
-  //   console.log(err);
-  // }
+  /* const lat = locationObj.getLat();
+  const lon = locationObj.getLon();
+  const units = locationObj.getUnit();
+  const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly,alerts&units=${units}&appid=${WEATHER_API_KEY}`;
+  try {
+    const weatherStream = await fetch(url);
+    const weatherJson = await weatherStream.json();
+    return weatherJson;
+  } catch (err) {
+    console.error(err);
+  } */
 
   const urlDataObj = {
     lat: locationObj.getLat(),
@@ -48,18 +44,17 @@ export const getWeatherFromCoords = async (locationObj) => {
 };
 
 export const getCoordsFromApi = async (entryText, units) => {
-  // const regex = /^\d+$/g;
-  // const flag = regex.test(entryText) ? "zip" : "q";
-  // const url = `https://api.openweathermap.org/data/2.5/weather?${flag}=${entryText}&units=${units}&appid=${WEATHER_API_KEY}`;
-  // const encodeUrl = encodeURI(url);
-  // try {
-  //   const dataStream = await fetch(encodeUrl);
-  //   const jsonData = await dataStream.json();
-  //   // console.log(jsonData);
-  //   return jsonData;
-  // } catch (err) {
-  //   console.error(err.stack);
-  // }
+  /* const regex = /^\d+$/g;
+  const flag = regex.test(entryText) ? "zip" : "q";
+  const url = `https://api.openweathermap.org/data/2.5/weather?${flag}=${entryText}&units=${units}&appid=${WEATHER_API_KEY}`;
+  const encodedUrl = encodeURI(url);
+  try {
+    const dataStream = await fetch(encodedUrl);
+    const jsonData = await dataStream.json();
+    return jsonData;
+  } catch (err) {
+    console.error(err.stack);
+  } */
 
   const urlDataObj = {
     text: entryText,
@@ -82,4 +77,5 @@ export const cleanText = (text) => {
   const entryText = text.replaceAll(regex, " ").trim();
   return entryText;
 };
+
 
